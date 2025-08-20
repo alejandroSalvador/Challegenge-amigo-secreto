@@ -13,8 +13,7 @@ function agregarAmigo() {
     contadorAmigos++;
 
     mostrarListado();
-
-    //limpiar campo
+  
   }
 }
 
@@ -25,8 +24,18 @@ function mostrarListado() {
   listaAmigos.innerHTML = "";
 
   //recorrer on un ciclo for la matriz
+  /*
   for (let i = 0; i < listaDeAmigos.length; i++) {
-    asignarTexto("listaAmigos", listaDeAmigos[i]) + "\n";
+    asignarTexto("listaAmigos", listaDeAmigos+ "\n") ;
+    limpiarCaja();
+  }
+    */
+   for (let i = 0; i < listaDeAmigos.length; i++) {
+    let itemLista = document.createElement("li");
+    itemLista.textContent = listaDeAmigos[i];
+    itemLista.className = "list-item"; // Agregar clase para estilizar
+    listaAmigos.appendChild(itemLista);
+    limpiarCaja();
   }
 }
 
@@ -41,7 +50,7 @@ function sortearAmigo() {
     return;
   } else {
     personaSeleccinada = elegirAmigo();
-    asignarTexto("resultado", personaSeleccinada);
+    asignarTexto("resultado", 'El amigo secreto es: '+ personaSeleccinada);
   }
 }
 
@@ -49,4 +58,9 @@ function elegirAmigo() {
   const indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
   const amigoSeleccionado = listaDeAmigos[indiceAleatorio];
   return amigoSeleccionado;
+}
+
+function limpiarCaja() {
+    let valorCaja = document.querySelector('#amigo').value = '';
+
 }
